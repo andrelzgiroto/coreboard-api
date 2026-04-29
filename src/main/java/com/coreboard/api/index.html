@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Social Login Test</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 50px;">
+
+<h2>Front-end Simulator (CoreBoard)</h2>
+<p>Click the button below to sign in with Google. The token will appear on the screen.</p>
+
+<div id="g_id_onload"
+     data-client_id="457235385012-cgl9c2adqcmpjv64io7fq1m18olpq1oa.apps.googleusercontent.com"
+     data-callback="handleGoogleResponse"
+     data-auto_prompt="false">
+</div>
+
+<div class="g_id_signin"
+     data-type="standard"
+     data-size="large"
+     data-theme="outline"
+     data-text="sign_in_with"
+     data-shape="rectangular"
+     data-logo_alignment="left">
+</div>
+
+<h3 style="margin-top: 30px;">Your ID Token:</h3>
+<textarea id="tokenArea" rows="10" cols="80" placeholder="The token will appear here..." readonly></textarea>
+
+<script>
+    // This function is automatically called by Google when login succeeds
+
+    function handleGoogleResponse(response) {
+        console.log("Token successfully received!");
+        // Gets the long token string and displays it on the screen
+        document.getElementById("tokenArea").value = response.credential;
+    }
+
+</script>
+</body>
+</html>
